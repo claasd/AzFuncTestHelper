@@ -1,4 +1,4 @@
-# caffoa: Create Azure Function From Open Api
+# AzFuncTestHelper
 
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/claasd/caffoa.net/blob/main/LICENSE)
 [![Nuget](https://img.shields.io/nuget/v/CdIts.AzFuncTestHelper)](https://www.nuget.org/packages/CdIts.Caffoa.Json.Net/)
