@@ -5,10 +5,10 @@
         <Nullable>enable</Nullable>
         <LangVersion>10</LangVersion>
         <IsPackable>true</IsPackable>
-        <RepositoryUrl>https://github.com/claasd/caffoa.net.git</RepositoryUrl>
+        <RepositoryUrl>https://github.com/claasd/AzFuncTestHelper.git</RepositoryUrl>
         <Authors>claasd</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Description>CSmall Helper class to create HttpRequest Mocks for Testing</Description>
+        <Description>Small Helper class to create HttpRequest Mocks for Testing</Description>
         <TargetFrameworks>net8.0;net7.0;net6.0;netcoreapp3.1</TargetFrameworks>
     </PropertyGroup>
 

@@ -13,15 +13,24 @@ public class RequestBuilder
     private readonly QueryCollection _query = new();
     private Stream? _data;
     private readonly HeaderDictionary _header = new();
+    private CancellationToken _cancellationToken = System.Threading.CancellationToken.None;
     public static HttpRequest Default => new RequestBuilder().Build();
-
+    public RequestBuilder CancellationToken(CancellationToken token)
+    {
+        _cancellationToken = token;
+        return this;
+    }
+    public RequestBuilder CancellationToken(CancellationTokenSource source)
+    {
+        _cancellationToken = source.Token;
+        return this;
+    }
     public RequestBuilder Query(string key, string? value)
     {
         if (value != null)
             _query.Values.Add(key, value);
         return this;
     }
-
     public RequestBuilder Query(string key, int? value) => Query(key, value?.ToString());
     public RequestBuilder Query(string key, long? value) => Query(key, value?.ToString());
     public RequestBuilder Query(string key, bool? value) => Query(key, value?.ToString());
@@ -71,7 +80,7 @@ public class RequestBuilder
         mockRequest.Setup(x => x.Body).Returns(_data ?? new MemoryStream());
         mockRequest.Setup(x => x.Headers).Returns(_header);
         mockRequest.Setup(r => r.Query).Returns(_query);
-        mockRequest.Setup(r => r.HttpContext.RequestAborted).Returns(new CancellationToken());
+        mockRequest.Setup(r => r.HttpContext.RequestAborted).Returns(_cancellationToken);
         return mockRequest;
     }
 }
